@@ -142,9 +142,6 @@ if __name__ == "__main__":
 
         if opt_name in ('-i','--input'):
             inputJsonName = opt_value
-            print("[*] Filename is ",fileName)
-            # do something
-            exit()
             
             
     
@@ -153,7 +150,7 @@ if __name__ == "__main__":
         sub_dict = json.load(j)
         sub_list = sub_dict['value']
 
-    with open(inputJsonName[:-3]+'srt','w') as f:
+    with open(inputJsonName[:-4]+'srt','w') as f:
         for count,i in enumerate(sub_list):
 
             time_stamp = "00:{:0>2}:{:0>2},{:0>3} --> 00:{:0>2}:{:0>2},{:0>3}".format(*time_process(i['start']),*time_process(i['end']))
@@ -161,4 +158,4 @@ if __name__ == "__main__":
             this_para = '{}\n{}\n{}\n\n'.format(count+1,time_stamp,content)
             f.write(this_para)
 
-    srt2ass(inputJsonName[:-3]+'srt')
+    srt2ass(inputJsonName[:-4]+'srt')
