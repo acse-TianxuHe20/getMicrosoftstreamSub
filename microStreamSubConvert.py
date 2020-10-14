@@ -1,11 +1,15 @@
 # https://web.microsoftstream.com/ website subtitle convertor
-# find the json file by search "transcript" in chrome inspect
+# find the json file by search transcript in chrome inspect
 
 import json
 import sys
 import os
 import re
 import codecs
+
+import getopt
+import sys
+
 # convert srt to ass
 
 def fileopen(input_file):
@@ -127,7 +131,24 @@ def time_process(time_string):
 
 
 if __name__ == "__main__":
-    inputJsonName = 'originsub.json'
+    opts,args = getopt.getopt(sys.argv[1:],'-h-i:-v',['help','input=','version'])
+    for opt_name,opt_value in opts:
+        if opt_name in ('-h','--help'):
+            print("[*] Help info")
+            exit()
+        if opt_name in ('-v','--version'):
+            print("[*] Version is v.0.1 ")
+            exit()
+
+        if opt_name in ('-i','--input'):
+            inputJsonName = opt_value
+            print("[*] Filename is ",fileName)
+            # do something
+            exit()
+            
+            
+    
+#     inputJsonName = 'originsub.json'
     with open(inputJsonName) as j:
         sub_dict = json.load(j)
         sub_list = sub_dict['value']
