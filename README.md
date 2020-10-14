@@ -7,5 +7,8 @@ Search transcript as the below snapshoot shows.
 
 Store the file in local folder then
 python getMicrosoftstreamSub.py -i <the file you stored>
+
+Result shows below.
 ```
 ![image](https://github.com/acse-TianxuHe20/getMicrosoftstreamSub/blob/main/photo.jpg)
+![image](https://github.com/acse-TianxuHe20/getMicrosoftstreamSub/blob/main/result.png)
