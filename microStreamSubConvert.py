@@ -116,17 +116,25 @@ def time_process(time_string):
     ms = '000'
     mins = '00'
     sec = '00'
+    hours = '00'
     if '.' in time_string:
         rep = re.search("PT.+\.(\d+)S",time_string)
         ms = rep.group(1)
 
     if 'M' in time_string:
-        rep = re.search("PT(\d+)M",time_string)
+        rep = re.search("PT.*?(\d+)M",time_string)
         mins = rep.group(1)
 
-    rep = re.search("PT\d*?M?(\d+)\.?\d*?S",time_string)
+    if 'H' in time_string:
+        rep = re.search("PT(\d+)H",time_string)
+        hours = rep.group(1)
+
+
+    rep = re.search("PT\d*?H?\d*?M?(\d+)\.?\d*?S",time_string)
     sec = rep.group(1)
-    return mins,sec,ms
+
+    return hours,mins,sec,ms
+
 
 
 
